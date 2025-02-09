@@ -5,21 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Property {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String address;
-    private String city;
-    private String country;
-    private Double pricePerNight;
+    private  Long id;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    @JoinColumn(name = "property_id")
+    private Property property;
+
+    private LocalDate startDate;
+    private LocalDate endDate;
+
+
 }
